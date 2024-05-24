@@ -1,0 +1,51 @@
+version: '3'
+services:
+  ora2pgview:
+    image: visulate/visulate-ora2pg
+    ports:
+      - "3000:3000"
+    volumes:
+      - E:\\ora2pg:/project
+    depends_on:
+      - oracle
+      - db
+  postgrest:
+    image: postgrest/postgrest
+    ports:
+      - "3001:3000"
+    environment:
+      PGRST_DB_URI: postgres://postgres:password@db:5432/postgres
+      PGRST_OPENAPI_SERVER_PROXY_URI: http://127.0.0.1:3000
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: reallyreallyreallyreallyverysafe
+    depends_on:
+      - db
+  db:
+    build: postgresdb/
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: noname@noname.com
+      PGADMIN_DEFAULT_PASSWORD: 123
+    ports:
+      - "5500:80"  
+  oracle:
+    build: oracle/
+    ports:
+      - "1521:1521"
+    environment:
+      ORACLE_PWD: 123
+  psotgrest-ui:
+    build: postgrest-ui/
+    ports:
+      - "8080:8080"
+    environment:
+      API_HOST: localhost
+      API_PORT: 3001
+  # Uncomment this if you want to persist the data.
+  # volumes:
+  #   - "./pgdata:/var/lib/postgresql/data"

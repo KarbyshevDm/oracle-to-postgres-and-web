@@ -1,0 +1,36 @@
+
+Connected to: Oracle Database 11g Enterprise Edition Release 11.2.0.3.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+Export done in WE8MSWIN1252 character set and AL16UTF16 NCHAR character set
+server uses AL32UTF8 character set (possible charset conversion)
+
+About to export specified users ...
+. exporting pre-schema procedural objects and actions
+. exporting foreign function library names for user INDEX_MAP 
+. exporting PUBLIC type synonyms
+. exporting private type synonyms
+. exporting object type definitions for user INDEX_MAP 
+About to export INDEX_MAP's objects ...
+. exporting database links
+. exporting sequence numbers
+. exporting cluster definitions
+. about to export INDEX_MAP's tables via Conventional Path ...
+. . exporting table                FONDS_TABLE_ALL         11 rows exported
+EXP-00091: Exporting questionable statistics.
+. exporting synonyms
+. exporting views
+. exporting stored procedures
+. exporting operators
+. exporting referential integrity constraints
+. exporting triggers
+. exporting indextypes
+. exporting bitmap, functional and extensible indexes
+. exporting posttables actions
+. exporting materialized views
+. exporting snapshot logs
+. exporting job queues
+. exporting refresh groups and children
+. exporting dimensions
+. exporting post-schema procedural objects and actions
+. exporting statistics
+Export terminated successfully with warnings.
