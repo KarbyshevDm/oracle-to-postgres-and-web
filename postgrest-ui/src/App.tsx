@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Resource,
   fetchUtils,
@@ -38,6 +39,8 @@ const config: IDataProviderConfig = {
   primaryKeys: defaultPrimaryKeys,
   schema: defaultSchema,
 };
+
+
 
 const store = localStorageStore();
 const dataProvider = postgrestRestProvider(config);

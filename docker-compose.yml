@@ -39,12 +39,15 @@ services:
       - "1521:1521"
     environment:
       ORACLE_PWD: 123
-  psotgrest-ui:
+  postgrest-ui:
     build: postgrest-ui/
     ports:
       - "8080:8080"
     environment:
       VITE_BACKEND_URL: http://localhost:3001
+    depends_on:
+      - postgrest
+      - db
   # Uncomment this if you want to persist the data.
   # volumes:
   #   - "./pgdata:/var/lib/postgresql/data"

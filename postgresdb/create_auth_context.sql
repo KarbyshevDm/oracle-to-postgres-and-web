@@ -128,18 +128,18 @@ CREATE ROLE anon NOINHERIT;
 CREATE role authenticator NOINHERIT LOGIN PASSWORD 'secret';
 GRANT anon TO authenticator;
 
-CREATE FUNCTION public.signup(username text, password text) RETURNS 
+CREATE FUNCTION public.signup(username text, password text) RETURNS text
     LANGUAGE plpgsql security definer
     AS $$
 DECLARE
-  check smallint;
+  check_user smallint;
   result text;
 BEGIN
 	
   -- check user
-  SELECT 1 FROM pg_roles INTO check;
-  IF check == 1 THEN
-    RAISE invalid_username USING message = 'this user already exists';
+  SELECT 1 FROM pg_roles WHERE rolname=username INTO   check_user;
+  IF check_user = 1 THEN
+    RAISE NOTICE 'this user already exists';
   END IF;
   --
 	EXECUTE FORMAT('CREATE ROLE "%I" LOGIN PASSWORD %L', username, password);
@@ -147,8 +147,8 @@ BEGIN
     INTO result;
   RETURN result;
     -- Simple Exception Catch
-EXCEPTION
-     RAISE NOTICE 'Error!';
+
+     RAISE EXCEPTION 'Error!';
   
 END;
 $$;
