@@ -1,6 +1,13 @@
 FROM node:latest
-ENV API_HOST {API_HOST}
-ENV API_PORT {API_PORT}
+
+# Define build arguments for environment variables
+ARG VITE_BACKEND_URL
+
+
+# Set environment variables during the build process
+ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+
+
 WORKDIR /app
 COPY package.json package.json
 RUN npm install

@@ -4,7 +4,7 @@ export const authProvider: AuthProvider = {
     
     // called when the user attempts to log in
     login: ({ username, password }) =>  {
-        const request = new Request(`http://${import.meta.env.API_HOST}:${import.meta.env.API_PORT}/rpc/login`, {
+        const request = new Request(`${import.meta.env.VITE_BACKEND_URL}/rpc/login`, {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),

@@ -44,8 +44,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      API_HOST: localhost
-      API_PORT: 3001
+      VITE_BACKEND_URL: http://localhost:3001
   # Uncomment this if you want to persist the data.
   # volumes:
   #   - "./pgdata:/var/lib/postgresql/data"

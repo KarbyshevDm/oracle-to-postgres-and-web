@@ -24,7 +24,6 @@ export const MyLoginForm = (props: MyLoginFormProps) => {
     const submit = (values:FieldValues ,event: React.BaseSyntheticEvent<HTMLFormElement, SubmitEvent>) => {
         //if(event.nativeEvent.submitter)
         const submitter = event.nativeEvent.submitter?.id;
-        console.log(values,submitter)
         setLoading(true);
         switch(submitter){
             case 'login':
@@ -33,7 +32,6 @@ export const MyLoginForm = (props: MyLoginFormProps) => {
                 setLoading(false);
             })
             .catch(error => {
-                console.log(error)
                 setLoading(false);
                 notify(
                     typeof error === 'string'
@@ -57,7 +55,7 @@ export const MyLoginForm = (props: MyLoginFormProps) => {
 
             break;
             case "signup":
-                var request = new Request(`http://${import.meta.env.API_HOST}:${import.meta.env.API_PORT}/rpc/signup`, {
+                var request = new Request(`${import.meta.env.VITE_BACKEND_URL}/rpc/signup`, {
             method: 'POST',
             body: JSON.stringify(values),
             headers: new Headers({ 'Content-Type': 'application/json' }),

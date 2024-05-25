@@ -32,13 +32,13 @@ const httpClient = (url: string, options: any) => {
 };
 
 const config: IDataProviderConfig = {
-  apiUrl: `http://${import.meta.env.API_HOST}:${import.meta.env.API_PORT}`,
+  apiUrl: `${import.meta.env.VITE_BACKEND_URL}`,
   httpClient: httpClient,
   defaultListOp: "eq",
   primaryKeys: defaultPrimaryKeys,
   schema: defaultSchema,
 };
-console.log(defaultPrimaryKeys)
+
 const store = localStorageStore();
 const dataProvider = postgrestRestProvider(config);
 
@@ -48,7 +48,7 @@ const App = () => (
       ...dataProvider,
       
       getResources: async () => {
-        const { json } = await httpClient(`http://${import.meta.env.API_HOST}:${import.meta.env.API_PORT}`, {});
+        const { json } = await httpClient(`${import.meta.env.VITE_BACKEND_URL}`, {});
         return { data: json };
       },
     }}
