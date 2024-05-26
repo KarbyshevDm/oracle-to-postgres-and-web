@@ -49,6 +49,3 @@ services:
     depends_on:
       - postgrest
       - db
-  # Uncomment this if you want to persist the data.
-  # volumes:
-  #   - "./pgdata:/var/lib/postgresql/data"
