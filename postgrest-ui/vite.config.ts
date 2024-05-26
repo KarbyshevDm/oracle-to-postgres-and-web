@@ -7,9 +7,6 @@ export default defineConfig(
     {
     
     plugins: [react()],
-    define: {
-        VITE_BACKEND_URL: process.env.VITE_BACKEND_URL,
-      },
     preview:{
         port: 8080,
         strictPort:true,
