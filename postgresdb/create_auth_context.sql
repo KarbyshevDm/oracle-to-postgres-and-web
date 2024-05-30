@@ -143,7 +143,7 @@ BEGIN
   END IF;
   --
 	EXECUTE FORMAT('CREATE ROLE "%I" LOGIN PASSWORD %L', username, password);
-    SELECT 'User '+ username + ' created successfuly'
+    SELECT FORMAT('User "%I" created successfuly',username)
     INTO result;
   RETURN result;
     -- Simple Exception Catch
